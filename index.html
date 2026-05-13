@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,351 +9,406 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abel&family=Rubik:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --c-primary: #041257;
+  --c-primary-light: #153B63;
+  --c-accent: #00ACFF;
+  --c-accent-hover: #3FB6EC;
+  --c-bg: #fff;
+  --c-bg-alt: #f9f9f9;
+  --c-text: #4c4c4c;
+  --c-danger: #cc0000;
+  --c-footer: #00AFF9;
+  --c-footer-dark: #041257;
+  --ff-heading: 'Abel', sans-serif;
+  --ff-body: 'Roboto', sans-serif;
+  --ff-nav: 'Rubik', sans-serif;
+  --max-w: min(1140px, 100% - 2rem);
+  --section-py: clamp(2.5rem, 6vw, 4.375rem);
+  --section-px: clamp(1rem, 3vw, 1.25rem);
+  --gap: clamp(1rem, 2vw, 2rem);
+  --radius: 0.5rem;
+}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Roboto',sans-serif;font-size:16px;line-height:1.65;color:#4c4c4c;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:80px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:var(--ff-body);
+  font-size:clamp(0.9375rem, 1.2vw, 1rem);
+  line-height:1.65;
+  color:var(--c-text);
+  background:var(--c-bg);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent
+}
+
 a{text-decoration:none;color:inherit}
 img{max-width:100%;height:auto;display:block}
-h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
+h1,h2,h3{font-family:var(--ff-heading);font-weight:600;text-wrap:balance}
+ul{list-style:none}
+button,input{cursor:pointer;font:inherit}
+:focus-visible{outline:2px solid var(--c-accent);outline-offset:2px}
 
-/* ===== CLOSURE BANNER ===== */
+/* closure banner */
 .closure-banner{
-  background:#cc0000;color:#fff;text-align:center;
-  padding:14px 20px;position:relative;z-index:999;
-  font-family:'Rubik',sans-serif;font-weight:700;font-size:15px;
+  background:var(--c-danger);color:#fff;text-align:center;
+  padding:clamp(10px, 2vw, 14px) clamp(12px, 2vw, 20px);
+  font-family:var(--ff-nav);font-weight:700;
+  font-size:clamp(0.8125rem, 1.5vw, 0.9375rem);
   letter-spacing:.5px;line-height:1.4;
   border-bottom:3px solid #990000
 }
 .closure-banner .sub{
-  display:block;font-size:13px;font-weight:400;opacity:.88;margin-top:4px;font-family:'Roboto',sans-serif;letter-spacing:.3px
+  display:block;font-size:clamp(0.75rem, 1.2vw, 0.875rem);
+  font-weight:400;opacity:.88;margin-top:4px;
+  font-family:var(--ff-body);letter-spacing:.3px
 }
 
-/* ===== TOP HEADER BAR ===== */
+/* top bar */
 .top-bar{
-  background:#fff;min-height:124px;
+  background:var(--c-bg);
+  min-height:clamp(60px, 12vw, 124px);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 50px;border-bottom:1px solid #eee
+  padding:clamp(12px, 3vw, 20px) clamp(16px, 4vw, 50px);
+  border-bottom:1px solid #eee;
+  gap:clamp(8px, 2vw, 16px)
 }
-.top-bar .logo{text-align:center;flex:1}
-.top-bar .logo svg{display:block;margin:0 auto}
+.top-bar .logo{
+  text-align:center;flex:1;
+  display:flex;justify-content:center
+}
+.top-bar .logo svg{
+  display:block;margin:0 auto;
+  width:clamp(160px, 40vw, 300px);
+  height:auto
+}
 .top-bar .phone-wrap{flex-shrink:0}
 .top-bar .phone-btn{
-  font-family:'Rubik',sans-serif;font-size:16px;font-weight:500;
-  color:#041257;background:transparent;border:1px solid #041257;
-  border-radius:4px;padding:8px 16px;letter-spacing:.5px;
-  cursor:pointer;white-space:nowrap;transition:all .3s
+  font-family:var(--ff-nav);font-size:clamp(0.8125rem, 1.4vw, 1rem);
+  font-weight:500;color:var(--c-primary);
+  background:transparent;border:1.5px solid var(--c-primary);
+  border-radius:4px;padding:clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 16px);
+  letter-spacing:.5px;white-space:nowrap;
+  transition:all .3s;display:inline-block;
+  min-height:44px;display:inline-flex;align-items:center
 }
-.top-bar .phone-btn:hover{background:#041257;color:#fff}
+.top-bar .phone-btn:hover{background:var(--c-primary);color:#fff}
+@media(pointer:coarse){.top-bar .phone-btn{padding:10px 16px}}
 
-/* ===== NAVIGATION ===== */
+/* nav */
 .nav-bar{
-  background:transparent;
-  background-image:radial-gradient(at top center,#041257 100%,#041257 0%);
+  background:var(--c-primary);
   position:sticky;top:0;z-index:100;
-  min-height:50px;display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid rgba(255,255,255,.1)
+  min-height:44px;display:flex;align-items:center
 }
-.nav-bar .nav-inner{
-  max-width:1406px;width:100%;padding:0 20px;
-  display:flex;align-items:center;justify-content:center
+.nav-inner{
+  max-width:1406px;width:100%;margin:0 auto;
+  padding:0 clamp(12px, 2vw, 20px);
+  display:flex;align-items:center;justify-content:center;
+  position:relative
 }
+.nav-toggle{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.nav-toggle-label{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:10px;
+  position:absolute;right:clamp(12px, 2vw, 20px);top:50%;translate:0 -50%
+}
+.nav-toggle-label span,.nav-toggle-label::after,.nav-toggle-label::before{
+  content:'';display:block;width:26px;height:2.5px;
+  background:#fff;border-radius:2px;transform-origin:center;
+  transition:transform .3s,opacity .3s
+}
+.nav-toggle-label span{transition:opacity .3s}
+.nav-toggle:checked~.nav-toggle-label::before{translate:0 7.5px;rotate:45deg}
+.nav-toggle:checked~.nav-toggle-label span{opacity:0}
+.nav-toggle:checked~.nav-toggle-label::after{translate:0 -7.5px;rotate:-45deg}
 .nav-bar ul{
-  list-style:none;display:flex;align-items:center;gap:0;margin:0;padding:0
+  display:flex;align-items:center;gap:0;margin:0;padding:0
 }
 .nav-bar ul li a{
   display:block;
-  font-family:'Rubik',sans-serif;font-size:15px;font-weight:300;
+  font-family:var(--ff-nav);font-size:clamp(0.75rem, 1.2vw, 0.9375rem);
   text-transform:uppercase;letter-spacing:.7px;
-  color:#fff;padding:13px 30px;transition:color .3s
+  color:#fff;padding:clamp(8px, 1.2vw, 14px) clamp(12px, 2vw, 30px);
+  transition:color .3s;min-height:44px;display:flex;align-items:center
 }
 .nav-bar ul li a:hover{color:#7a7a7a}
+.nav-bar ul li a:focus-visible{outline:2px solid var(--c-accent);outline-offset:-2px}
+@media(max-width:768px){
+  .nav-toggle-label{display:flex}
+  .nav-bar ul{
+    display:none;flex-direction:column;width:100%;
+    position:absolute;top:100%;left:0;
+    background:var(--c-primary);padding:0 0 12px;
+    box-shadow:0 8px 24px rgba(0,0,0,.2)
+  }
+  .nav-toggle:checked~ul{display:flex}
+  .nav-bar ul li a{padding:12px 20px;justify-content:center}
+  .nav-inner{justify-content:flex-start}
+}
 
-/* ===== HERO ===== */
+/* hero */
 .hero{
   position:relative;
   background-image:url('https://safehavenvaults.com/wp-content/uploads/Precious-Metal-Depository.jpg');
-  background-position:center center;background-size:cover;background-attachment:fixed;
-  min-height:600px;display:flex;align-items:center;justify-content:center;
+  background-position:center;background-size:cover;
+  background-attachment:scroll;
+  min-height:clamp(280px, 65dvh, 600px);
+  display:flex;align-items:center;justify-content:center;
   box-shadow:0 0 68px 0 rgba(107,107,107,.5)
 }
+@media(min-width:1024px){.hero{background-attachment:fixed}}
 .hero .overlay{
   position:absolute;inset:0;
   background-color:#0E4C63;opacity:.47
 }
-.hero .hero-content{
-  position:relative;z-index:2;text-align:center;
-  max-width:1140px;width:100%;padding:40px 20px
-}
+.hero .hero-content{position:relative;z-index:2;text-align:center;width:100%;padding:clamp(24px, 4vw, 40px) clamp(16px, 3vw, 20px);max-width:1140px}
 .hero h1{
-  font-family:'Abel',sans-serif;font-size:51px;font-weight:600;
-  text-transform:capitalize;line-height:1.1;color:#fff;
-  margin-bottom:15px
+  font-family:var(--ff-heading);
+  font-size:clamp(1.75rem, 5.5vw, 3.1875rem);
+  line-height:1.1;color:#fff;margin-bottom:clamp(8px, 1.5vw, 15px)
 }
 .hero p{
-  font-size:22px;font-weight:600;color:#fff;
-  max-width:700px;margin:0 auto 30px
+  font-size:clamp(1rem, 2.4vw, 1.375rem);
+  font-weight:600;color:#fff;
+  max-width:700px;margin:0 auto clamp(20px, 3vw, 30px)
 }
 .hero .btn{
-  display:inline-block;
-  background-color:#153B63;color:#fff;
-  font-family:'Roboto',sans-serif;font-size:26px;font-weight:600;
-  letter-spacing:.3px;padding:18px 40px;
-  border:2px solid #153B63;border-radius:22px;
+  display:inline-flex;align-items:center;
+  background:var(--c-primary-light);color:#fff;
+  font-family:var(--ff-body);
+  font-size:clamp(1.125rem, 2.5vw, 1.625rem);
+  font-weight:600;letter-spacing:.3px;
+  padding:clamp(12px, 2vw, 18px) clamp(24px, 4vw, 40px);
+  border:2px solid var(--c-primary-light);border-radius:22px;
   box-shadow:0 0 15px 5px rgba(0,0,0,.5);
-  transition:background .3s;cursor:pointer
+  transition:background .3s;text-align:center;
+  min-height:44px
 }
-.hero .btn:hover{background-color:#3FB6EC;border-color:#3FB6EC}
+.hero .btn:hover{background:var(--c-accent-hover);border-color:var(--c-accent-hover)}
 
-/* ===== CTA STRIP ===== */
+/* cta strip */
 .cta-strip{
-  background:#fff;padding:100px 20px;
+  background:var(--c-bg);
+  padding:clamp(40px, 8vw, 100px) var(--section-px);
   box-shadow:inset 0 0 31px 0 rgba(0,0,0,.5);
   text-align:center
 }
 .cta-strip .inner{max-width:870px;margin:0 auto}
 .cta-strip h2{
-  font-family:'Helvetica',Arial,sans-serif;font-size:34px;font-weight:900;
-  text-transform:uppercase;line-height:1.2;color:#000;
-  margin-bottom:20px
+  font-family:'Helvetica',Arial,sans-serif;
+  font-size:clamp(1.25rem, 4vw, 2.125rem);
+  font-weight:900;text-transform:uppercase;
+  line-height:1.2;color:#000;margin-bottom:clamp(12px, 2vw, 20px)
 }
 .cta-strip .col-wrap{
-  display:flex;align-items:center;gap:40px;justify-content:center;
-  border-left:2px solid #041257;padding-left:30px
+  display:flex;align-items:center;gap:clamp(16px, 4vw, 40px);
+  justify-content:center;
+  border-left:2px solid var(--c-primary);padding-left:clamp(16px, 3vw, 30px)
 }
 .cta-strip .col-wrap p{
-  font-size:16px;line-height:1.9;color:#000;text-align:center;flex:1
+  font-size:clamp(0.875rem, 1.2vw, 1rem);
+  line-height:1.9;color:#000;text-align:center;flex:1
 }
 .cta-strip .btn-call{
-  display:inline-block;flex-shrink:0;
-  background-color:#00ACFF;color:#fff;
-  font-size:20px;font-weight:700;padding:16px 48px;
+  display:inline-flex;align-items:center;
+  background:var(--c-accent);color:#fff;
+  font-size:clamp(1rem, 2vw, 1.25rem);
+  font-weight:700;padding:clamp(12px, 2vw, 16px) clamp(28px, 5vw, 48px);
   border-radius:30px;box-shadow:0 4px 10px 0 rgba(0,0,0,.5);
-  transition:opacity .3s;border:none;cursor:pointer;font-family:'Roboto',sans-serif
+  transition:opacity .3s;border:none;min-height:44px;
+  margin-top:clamp(16px, 3vw, 30px)
 }
 .cta-strip .btn-call:hover{opacity:.85}
-@media(max-width:768px){
+@media(max-width:640px){
   .cta-strip .col-wrap{flex-direction:column;border-left:none;padding-left:0}
 }
 
-/* ===== WHY CHOOSE ===== */
-.why-choose{padding:70px 20px;text-align:center}
-.why-choose .inner{max-width:1140px;margin:0 auto}
-.why-choose h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
+/* why choose */
+.why-choose,.about-section,.faqs-section{padding:var(--section-py) var(--section-px);text-align:center}
+.why-choose .inner,.about-section .inner{max-width:var(--max-w);margin:0 auto}
+.why-choose h2,.about-section h2,.faqs-section h2,.storage-section h2,.contact-section h2,.trust-section h2{
+  font-family:var(--ff-heading);
+  font-size:clamp(1.375rem, 4vw, 2.1875rem);
+  text-transform:capitalize;color:var(--c-text);margin-bottom:5px
 }
-.why-choose .divider{
-  width:92%;height:3px;background:#041257;margin:5px auto 50px
+.divider{
+  width:min(92%, 870px);height:2px;background:var(--c-primary);
+  margin:5px auto clamp(24px, 4vw, 50px)
 }
+.divider--narrow{width:min(75%, 600px)}
+
+/* feature grid */
 .feature-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;gap:30px;
-  text-align:center
+  grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px), 1fr));
+  gap:var(--gap);text-align:center
 }
-@media(max-width:768px){.feature-grid{grid-template-columns:1fr}}
-.feature-card{padding:20px}
+.feature-card{padding:clamp(12px, 2vw, 20px)}
 .feature-icon{
   display:inline-flex;align-items:center;justify-content:center;
-  width:80px;height:80px;border-radius:50%;
-  margin-bottom:20px;
-  transition:all .3s;border:2px solid #041257
+  width:clamp(56px, 8vw, 80px);height:clamp(56px, 8vw, 80px);
+  border-radius:50%;margin-bottom:clamp(12px, 2vw, 20px);
+  transition:all .3s;border:2px solid var(--c-primary)
 }
-.feature-card:hover .feature-icon{
-  background-color:#4054b2;border-color:#4054b2
-}
+.feature-icon svg{width:clamp(22px, 3vw, 32px);height:clamp(22px, 3vw, 32px)}
+.feature-card:hover .feature-icon{background-color:#4054b2;border-color:#4054b2}
 .feature-card:hover .feature-icon svg *{stroke:#fff}
 .feature-card h3{
-  font-family:'Abel',sans-serif;font-size:21px;text-transform:uppercase;
-  color:#4c4c4c;margin-bottom:8px
+  font-family:var(--ff-heading);
+  font-size:clamp(1.125rem, 2vw, 1.3125rem);
+  text-transform:uppercase;color:var(--c-text);margin-bottom:8px
 }
-.feature-card p{
-  font-size:17px;font-weight:300;color:#4c4c4c;line-height:1.7
-}
+.feature-card p{font-size:clamp(0.9rem, 1.2vw, 1.0625rem);font-weight:300;color:var(--c-text);line-height:1.7}
 
-/* ===== STORAGE OPTIONS SECTION ===== */
-.storage-section{padding:70px 20px;text-align:center;background:#f9f9f9}
-.storage-section .inner{max-width:1140px;margin:0 auto}
-.storage-section h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
-}
-.storage-section .divider{
-  width:92%;height:3px;background:#041257;margin:5px auto 40px
-}
+/* storage section */
+.storage-section{padding:var(--section-py) var(--section-px);text-align:center;background:var(--c-bg-alt)}
+.storage-section .inner{max-width:var(--max-w);margin:0 auto}
 .storage-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px
+  grid-template-columns:repeat(auto-fit,minmax(min(100%, 220px), 1fr));
+  gap:clamp(16px, 2vw, 25px)
 }
 .storage-card{
-  background:#fff;border:1px solid #e0e0e0;border-radius:12px;
-  padding:30px 20px;text-align:center;
-  transition:box-shadow .3s,transform .2s
+  background:var(--c-bg);border:1px solid #e0e0e0;border-radius:12px;
+  padding:clamp(20px, 3vw, 30px) clamp(16px, 2vw, 20px);text-align:center;
+  transition:box-shadow .3s,translate .2s;
+  display:flex;flex-direction:column;align-items:center
 }
-.storage-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1);transform:translateY(-3px)}
+.storage-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1);translate:0 -3px}
 .storage-card .icon-wrap{
-  width:64px;height:64px;margin:0 auto 16px;
+  width:clamp(48px, 6vw, 64px);height:clamp(48px, 6vw, 64px);
+  margin:0 auto clamp(12px, 2vw, 16px);
   display:flex;align-items:center;justify-content:center;
-  border:2px solid #041257;border-radius:50%;
-  transition:all .3s
+  border:2px solid var(--c-primary);border-radius:50%;
+  transition:all .3s;flex-shrink:0
 }
-.storage-card:hover .icon-wrap{background:#041257}
+.storage-card .icon-wrap svg{width:clamp(20px, 2.5vw, 28px);height:clamp(20px, 2.5vw, 28px)}
+.storage-card:hover .icon-wrap{background:var(--c-primary)}
 .storage-card:hover .icon-wrap svg *{stroke:#fff}
 .storage-card h3{
-  font-family:'Abel',sans-serif;font-size:22px;text-transform:uppercase;
-  color:#041257;margin-bottom:8px
+  font-family:var(--ff-heading);
+  font-size:clamp(1.125rem, 2vw, 1.375rem);
+  text-transform:uppercase;color:var(--c-primary);margin-bottom:8px
 }
-.storage-card p{font-size:15px;color:#4c4c4c;line-height:1.7}
+.storage-card p{font-size:clamp(0.875rem, 1.1vw, 0.9375rem);color:var(--c-text);line-height:1.7}
 
-/* ===== ABOUT SECTION ===== */
-.about-section{padding:70px 20px;text-align:center}
-.about-section .inner{max-width:870px;margin:0 auto}
-.about-section h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
-}
-.about-section .divider{
-  width:75%;height:2px;background:#041257;margin:5px auto 30px
-}
-.about-section p{font-size:17px;color:#4c4c4c;line-height:1.9;margin-bottom:15px}
+/* about */
+.about-section .inner{max-width:min(870px, 100% - 2rem)}
+.about-section p{font-size:clamp(0.9375rem, 1.2vw, 1.0625rem);color:var(--c-text);line-height:1.9;margin-bottom:15px}
 
-/* ===== CONTACT SECTION ===== */
-.contact-section{padding:70px 20px;text-align:center;background:#f9f9f9}
-.contact-section .inner{max-width:700px;margin:0 auto}
-.contact-section h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
-}
-.contact-section .divider{
-  width:75%;height:2px;background:#041257;margin:5px auto 30px
-}
-.contact-details{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+/* contact */
+.contact-section{padding:var(--section-py) var(--section-px);text-align:center;background:var(--c-bg-alt)}
+.contact-section .inner{max-width:min(700px, 100% - 2rem);margin:0 auto}
+.contact-section p{font-size:clamp(0.9375rem, 1.2vw, 1.0625rem);color:var(--c-text);line-height:1.8;margin-bottom:10px}
+.contact-details{display:flex;flex-direction:column;gap:clamp(12px, 2vw, 16px);margin-top:24px}
 .contact-details .item{
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  font-size:18px;color:#4c4c4c
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(8px, 1.5vw, 14px);
+  font-size:clamp(1rem, 1.5vw, 1.125rem);color:var(--c-text);
+  flex-wrap:wrap
 }
 .contact-details .item .label{
-  font-weight:600;color:#041257;min-width:60px;text-align:right
+  font-weight:600;color:var(--c-primary);min-width:60px;text-align:right
 }
-.contact-details .item .value{color:#041257;font-weight:600;transition:color .3s}
-.contact-details .item .value:hover{color:#00ACFF}
+.contact-details .item .value{color:var(--c-primary);font-weight:600;transition:color .3s}
+.contact-details .item .value:hover{color:var(--c-accent)}
 
-/* ===== FAQS SECTION ===== */
-.faqs-section{padding:70px 20px;text-align:center}
-.faqs-section .inner{max-width:800px;margin:0 auto}
-.faqs-section h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
+/* faqs */
+.faqs-section .inner{max-width:min(800px, 100% - 2rem);margin:0 auto}
+.faq-item{border-bottom:1px solid #e0e0e0}
+.faq-item summary{
+  font-family:var(--ff-heading);
+  font-size:clamp(1.125rem, 2vw, 1.25rem);
+  font-weight:600;color:var(--c-primary);
+  padding:clamp(12px, 2vw, 18px) 0;
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;list-style:none;
+  -webkit-tap-highlight-color:transparent
 }
-.faqs-section .divider{
-  width:75%;height:2px;background:#041257;margin:5px auto 30px
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';font-size:clamp(1.25rem, 2vw, 1.5rem);
+  font-weight:300;line-height:1;transition:rotate .3s;
+  flex-shrink:0;margin-left:12px
 }
-.faq-item{
-  border-bottom:1px solid #e0e0e0;padding:18px 0;
-  text-align:left;cursor:pointer
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item .faq-a{
+  padding:0 0 clamp(12px, 2vw, 18px);
+  font-size:clamp(0.875rem, 1.2vw, 1rem);
+  color:var(--c-text);line-height:1.7
 }
-.faq-q{
-  font-family:'Abel',sans-serif;font-size:20px;font-weight:600;
-  color:#041257;display:flex;justify-content:space-between;align-items:center
-}
-.faq-indicator{
-  flex-shrink:0;width:20px;height:20px;position:relative;margin-left:12px
-}
-.faq-indicator::before,.faq-indicator::after{
-  content:'';position:absolute;background:#041257;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  transition:transform .3s
-}
-.faq-indicator::before{width:2px;height:16px}
-.faq-indicator::after{width:16px;height:2px}
-.faq-item.open .faq-indicator::before{transform:translate(-50%,-50%) rotate(90deg)}
-.faq-a{
-  max-height:0;overflow:hidden;transition:max-height .4s ease;
-  font-size:16px;color:#4c4c4c;line-height:1.7
-}
-.faq-item.open .faq-a{max-height:200px;padding-top:12px}
 
-/* ===== TRUST BADGES ===== */
-.trust-section{padding:100px 20px;text-align:center}
-.trust-section h2{
-  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
-  color:#4c4c4c;margin-bottom:5px
-}
-.trust-section .divider{
-  width:75%;height:2px;background:#041257;
-  margin:15px auto 40px
-}
+/* trust */
+.trust-section{padding:var(--section-py) var(--section-px);text-align:center}
 .trust-logos{
   display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
-  gap:20px;max-width:900px;margin:0 auto;padding-top:25px
+  gap:clamp(12px, 2vw, 20px);max-width:min(900px, 100% - 2rem);
+  margin:0 auto;padding-top:clamp(16px, 3vw, 25px)
 }
 .trust-logos .logo-item{
-  flex:0 0 auto;padding:25px;margin:5px;
+  flex:0 0 auto;
+  padding:clamp(16px, 3vw, 25px) clamp(20px, 3vw, 30px);
+  margin:clamp(2px, .5vw, 5px);
   border-radius:4px;transition:box-shadow .3s;cursor:default;
   display:flex;align-items:center;justify-content:center
 }
 .trust-logos .logo-item:hover{box-shadow:0 0 25px 0 rgba(0,0,0,.16)}
-
-/* ===== FOOTER ===== */
-.footer-main{
-  background-color:#00AFF9;padding:70px 20px;color:#fff
+.trust-logos .logo-item span{
+  font-size:clamp(1rem, 2.5vw, 1.625rem)!important
 }
-.footer-main .inner{max-width:1140px;margin:0 auto}
+
+/* footer */
+.footer-main{
+  background:var(--c-footer);padding:var(--section-py) var(--section-px);color:#fff
+}
+.footer-main .inner{max-width:var(--max-w);margin:0 auto}
 .footer-grid{
   display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:30px;text-align:center
+  grid-template-columns:repeat(auto-fit,minmax(min(100%, 220px), 1fr));
+  gap:var(--gap);text-align:center
 }
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
 .footer-col h4{
-  font-family:'Abel',sans-serif;font-size:18px;font-weight:500;color:#fff;
-  margin-bottom:15px
+  font-family:var(--ff-heading);
+  font-size:clamp(1rem, 1.5vw, 1.125rem);
+  font-weight:500;color:#fff;margin-bottom:clamp(10px, 1.5vw, 15px)
 }
-.footer-col p{
-  font-size:14px;font-weight:300;color:#fff;line-height:1.8
-}
+.footer-col p{font-size:clamp(0.8125rem, 1.1vw, 0.875rem);font-weight:300;color:#fff;line-height:1.8}
 .footer-col .contact-btn{
-  display:inline-block;
-  background-color:#1D6F92;color:#fff;
-  font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;
-  padding:12px 24px;border-radius:3px;margin:5px 0;
-  transition:background .3s;border:none;cursor:pointer
+  display:inline-flex;align-items:center;
+  background:#1D6F92;color:#fff;
+  font-family:var(--ff-body);font-size:clamp(0.8125rem, 1.1vw, 0.875rem);
+  font-weight:400;padding:clamp(10px, 1.2vw, 12px) clamp(18px, 2.5vw, 24px);
+  border-radius:3px;margin:clamp(3px, .5vw, 5px);
+  transition:background .3s;border:none;min-height:44px
 }
-.footer-col .contact-btn:hover{background-color:#155574}
-.footer-col ul{list-style:none;padding:0}
+.footer-col .contact-btn:hover{background:#155574}
 .footer-col ul li{margin-bottom:8px}
 .footer-col ul li a{
-  font-size:19px;font-weight:300;color:#fff;
-  transition:color .3s
+  font-size:clamp(1rem, 1.5vw, 1.1875rem);
+  font-weight:300;color:#fff;transition:color .3s;
+  display:inline-block;padding:4px 0
 }
 .footer-col ul li a:hover{color:#1D6F92}
 
 .footer-bottom{
-  background-color:#041257;padding:15px 20px;text-align:center;
-  border-top:1px solid rgba(255,255,255,.19);
-  display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;
-  min-height:50px
+  background:var(--c-footer-dark);padding:clamp(10px, 2vw, 15px) var(--section-px);
+  text-align:center;display:flex;justify-content:center;
+  align-items:center;gap:clamp(8px, 2vw, 20px);flex-wrap:wrap;
+  min-height:44px
 }
-.footer-bottom span{
-  font-size:12px;font-weight:300;color:#adadad
-}
-.footer-bottom a{
-  font-size:12px;font-weight:300;color:#adadad;transition:color .3s
+.footer-bottom span,.footer-bottom a{
+  font-size:clamp(0.6875rem, 1vw, 0.75rem);font-weight:300;color:#adadad;
+  transition:color .3s
 }
 .footer-bottom a:hover{color:#fff}
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-  .top-bar{padding:15px 20px;min-height:auto;flex-direction:row}
-  .top-bar .phone-btn{font-size:14px;padding:6px 12px}
-  .nav-bar ul{flex-wrap:wrap;justify-content:center}
-  .nav-bar ul li a{padding:10px 16px;font-size:13px}
-}
-@media(max-width:767px){
-  .hero h1{font-size:42px}
-  .hero p{font-size:18px}
-  .hero .btn{font-size:20px;padding:14px 28px}
-}
+/* utility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -377,6 +433,8 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
 
 <div class="nav-bar">
   <div class="nav-inner">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" autocomplete="off">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu"><span></span></label>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#storage">Storage Options</a></li>
@@ -402,7 +460,7 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
     <div class="col-wrap">
       <p>If you are concerned about the safety and security of your valuable assets, BH Private Vaults provides the optimal solution. We offer the premier alternative to bank safe deposit boxes. Our private vault storage delivers <strong>SAFE</strong>, <strong>SECURE</strong>, and <strong>ANONYMOUS</strong> storage for all types of valuables with 24-hour access, 365 days per year.</p>
     </div>
-    <a href="tel:+12763004429" class="btn-call" style="margin-top:30px;display:inline-block">Inquiries: (276) 300-4429</a>
+    <a href="tel:+12763004429" class="btn-call">Inquiries: (276) 300-4429</a>
   </div>
 </section>
 
@@ -508,7 +566,7 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
 <section id="about" class="about-section">
   <div class="inner">
     <h2>About BH Private Vaults</h2>
-    <div class="divider"></div>
+    <div class="divider" style="width:min(75%,600px)"></div>
     <p>BH Private Vaults is a premier private vault storage facility dedicated to providing safe, secure, and anonymous storage solutions for all types of valuables. Our facility has been designed from the ground up with military-grade security standards, ensuring your assets are protected at all times.</p>
     <p>We believe in uncompromising privacy and security. Our advanced biometric iris scanning technology, coupled with unique PIN codes and physical keys, ensures that only you can access your vault. No identification or social security number is required to rent a vault, providing complete anonymity.</p>
     <p>With 24/7 access, 365 days a year, and backup power systems, you can access your valuables whenever you need them, even during power outages.</p>
@@ -518,8 +576,8 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
 <section id="contact" class="contact-section">
   <div class="inner">
     <h2>Contact Us</h2>
-    <div class="divider"></div>
-    <p style="font-size:17px;color:#4c4c4c;line-height:1.8;margin-bottom:10px">For inquiries regarding existing accounts or property retrieval, please reach out using the details below.</p>
+    <div class="divider divider--narrow"></div>
+    <p>For inquiries regarding existing accounts or property retrieval, please reach out using the details below.</p>
     <div class="contact-details">
       <div class="item">
         <span class="label">Email</span>
@@ -536,29 +594,29 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
 <section id="faqs" class="faqs-section">
   <div class="inner">
     <h2>Frequently Asked Questions</h2>
-    <div class="divider"></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What identification is required to rent a vault? <span class="faq-indicator"></span></div>
+    <div class="divider divider--narrow"></div>
+    <details class="faq-item">
+      <summary>What identification is required to rent a vault?</summary>
       <div class="faq-a">No driver's license or social security number is required. We prioritize your privacy and anonymity above all else.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What are your access hours? <span class="faq-indicator"></span></div>
+    </details>
+    <details class="faq-item">
+      <summary>What are your access hours?</summary>
       <div class="faq-a">We offer 24/7 access, 365 days a year. Our facility is always open to our clients, even during holidays and power outages.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What security measures are in place? <span class="faq-indicator"></span></div>
+    </details>
+    <details class="faq-item">
+      <summary>What security measures are in place?</summary>
       <div class="faq-a">Our facility features fortified steel walls, bulletproof glass, laser sensors, armed security personnel, and advanced biometric iris scanners.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Is the facility currently operational? <span class="faq-indicator"></span></div>
+    </details>
+    <details class="faq-item">
+      <summary>Is the facility currently operational?</summary>
       <div class="faq-a">No, BH Private Vaults has permanently ceased operations. All vaults have been decommissioned and the facility is closed. For inquiries regarding existing accounts, please use the contact information above.</div>
-    </div>
+    </details>
   </div>
 </section>
 
 <section class="trust-section">
   <h2>Secure. Trusted. Local.</h2>
-  <div class="divider"></div>
+  <div class="divider divider--narrow"></div>
   <div class="trust-logos">
     <div class="logo-item"><span style="font-size:26px;font-weight:700;color:#4c4c4c;font-family:'Abel',sans-serif">ADT</span></div>
     <div class="logo-item"><span style="font-size:22px;font-weight:300;color:#6e6e6e;font-family:'Abel',sans-serif">SLC Chamber</span></div>
@@ -573,9 +631,7 @@ h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
     <div class="footer-grid">
       <div class="footer-col">
         <h4>Contact &amp; Access</h4>
-        <p>
-          For inquiries regarding existing accounts or property retrieval, please reach out via the contact methods below.
-        </p>
+        <p>For inquiries regarding existing accounts or property retrieval, please reach out via the contact methods below.</p>
         <br>
         <a href="mailto:beverlyhillsvault.closure@outlook.com" class="contact-btn">Email Us</a>
         <a href="tel:+12763004429" class="contact-btn">(276) 300-4429</a>
