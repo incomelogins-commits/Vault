@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BH Private Vaults – Premium Vault Storage Facility</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abel&family=Rubik:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Roboto',sans-serif;font-size:16px;line-height:1.65;color:#4c4c4c;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{font-family:'Abel',sans-serif;font-weight:600}
+
+/* ===== CLOSURE BANNER ===== */
+.closure-banner{
+  background:#cc0000;color:#fff;text-align:center;
+  padding:14px 20px;position:relative;z-index:999;
+  font-family:'Rubik',sans-serif;font-weight:700;font-size:15px;
+  letter-spacing:.5px;line-height:1.4;
+  border-bottom:3px solid #990000
+}
+.closure-banner .sub{
+  display:block;font-size:13px;font-weight:400;opacity:.88;margin-top:4px;font-family:'Roboto',sans-serif;letter-spacing:.3px
+}
+
+/* ===== TOP HEADER BAR ===== */
+.top-bar{
+  background:#fff;min-height:124px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 50px;border-bottom:1px solid #eee
+}
+.top-bar .logo{text-align:center;flex:1}
+.top-bar .logo svg{display:block;margin:0 auto}
+.top-bar .phone-wrap{flex-shrink:0}
+.top-bar .phone-btn{
+  font-family:'Rubik',sans-serif;font-size:16px;font-weight:500;
+  color:#041257;background:transparent;border:1px solid #041257;
+  border-radius:4px;padding:8px 16px;letter-spacing:.5px;
+  cursor:pointer;white-space:nowrap;transition:all .3s
+}
+.top-bar .phone-btn:hover{background:#041257;color:#fff}
+
+/* ===== NAVIGATION ===== */
+.nav-bar{
+  background:transparent;
+  background-image:radial-gradient(at top center,#041257 100%,#041257 0%);
+  position:sticky;top:0;z-index:100;
+  min-height:50px;display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid rgba(255,255,255,.1)
+}
+.nav-bar .nav-inner{
+  max-width:1406px;width:100%;padding:0 20px;
+  display:flex;align-items:center;justify-content:center
+}
+.nav-bar ul{
+  list-style:none;display:flex;align-items:center;gap:0;margin:0;padding:0
+}
+.nav-bar ul li a{
+  display:block;
+  font-family:'Rubik',sans-serif;font-size:15px;font-weight:300;
+  text-transform:uppercase;letter-spacing:.7px;
+  color:#fff;padding:13px 30px;transition:color .3s
+}
+.nav-bar ul li a:hover{color:#7a7a7a}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  background-image:url('https://safehavenvaults.com/wp-content/uploads/Precious-Metal-Depository.jpg');
+  background-position:center center;background-size:cover;background-attachment:fixed;
+  min-height:600px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 68px 0 rgba(107,107,107,.5)
+}
+.hero .overlay{
+  position:absolute;inset:0;
+  background-color:#0E4C63;opacity:.47
+}
+.hero .hero-content{
+  position:relative;z-index:2;text-align:center;
+  max-width:1140px;width:100%;padding:40px 20px
+}
+.hero h1{
+  font-family:'Abel',sans-serif;font-size:51px;font-weight:600;
+  text-transform:capitalize;line-height:1.1;color:#fff;
+  margin-bottom:15px
+}
+.hero p{
+  font-size:22px;font-weight:600;color:#fff;
+  max-width:700px;margin:0 auto 30px
+}
+.hero .btn{
+  display:inline-block;
+  background-color:#153B63;color:#fff;
+  font-family:'Roboto',sans-serif;font-size:26px;font-weight:600;
+  letter-spacing:.3px;padding:18px 40px;
+  border:2px solid #153B63;border-radius:22px;
+  box-shadow:0 0 15px 5px rgba(0,0,0,.5);
+  transition:background .3s;cursor:pointer
+}
+.hero .btn:hover{background-color:#3FB6EC;border-color:#3FB6EC}
+
+/* ===== CTA STRIP ===== */
+.cta-strip{
+  background:#fff;padding:100px 20px;
+  box-shadow:inset 0 0 31px 0 rgba(0,0,0,.5);
+  text-align:center
+}
+.cta-strip .inner{max-width:870px;margin:0 auto}
+.cta-strip h2{
+  font-family:'Helvetica',Arial,sans-serif;font-size:34px;font-weight:900;
+  text-transform:uppercase;line-height:1.2;color:#000;
+  margin-bottom:20px
+}
+.cta-strip .col-wrap{
+  display:flex;align-items:center;gap:40px;justify-content:center;
+  border-left:2px solid #041257;padding-left:30px
+}
+.cta-strip .col-wrap p{
+  font-size:16px;line-height:1.9;color:#000;text-align:center;flex:1
+}
+.cta-strip .btn-call{
+  display:inline-block;flex-shrink:0;
+  background-color:#00ACFF;color:#fff;
+  font-size:20px;font-weight:700;padding:16px 48px;
+  border-radius:30px;box-shadow:0 4px 10px 0 rgba(0,0,0,.5);
+  transition:opacity .3s;border:none;cursor:pointer;font-family:'Roboto',sans-serif
+}
+.cta-strip .btn-call:hover{opacity:.85}
+@media(max-width:768px){
+  .cta-strip .col-wrap{flex-direction:column;border-left:none;padding-left:0}
+}
+
+/* ===== WHY CHOOSE ===== */
+.why-choose{padding:70px 20px;text-align:center}
+.why-choose .inner{max-width:1140px;margin:0 auto}
+.why-choose h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.why-choose .divider{
+  width:92%;height:3px;background:#041257;margin:5px auto 50px
+}
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;gap:30px;
+  text-align:center
+}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{padding:20px}
+.feature-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:80px;height:80px;border-radius:50%;
+  margin-bottom:20px;
+  transition:all .3s;border:2px solid #041257
+}
+.feature-card:hover .feature-icon{
+  background-color:#4054b2;border-color:#4054b2
+}
+.feature-card:hover .feature-icon svg *{stroke:#fff}
+.feature-card h3{
+  font-family:'Abel',sans-serif;font-size:21px;text-transform:uppercase;
+  color:#4c4c4c;margin-bottom:8px
+}
+.feature-card p{
+  font-size:17px;font-weight:300;color:#4c4c4c;line-height:1.7
+}
+
+/* ===== STORAGE OPTIONS SECTION ===== */
+.storage-section{padding:70px 20px;text-align:center;background:#f9f9f9}
+.storage-section .inner{max-width:1140px;margin:0 auto}
+.storage-section h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.storage-section .divider{
+  width:92%;height:3px;background:#041257;margin:5px auto 40px
+}
+.storage-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px
+}
+.storage-card{
+  background:#fff;border:1px solid #e0e0e0;border-radius:12px;
+  padding:30px 20px;text-align:center;
+  transition:box-shadow .3s,transform .2s
+}
+.storage-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1);transform:translateY(-3px)}
+.storage-card .icon-wrap{
+  width:64px;height:64px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #041257;border-radius:50%;
+  transition:all .3s
+}
+.storage-card:hover .icon-wrap{background:#041257}
+.storage-card:hover .icon-wrap svg *{stroke:#fff}
+.storage-card h3{
+  font-family:'Abel',sans-serif;font-size:22px;text-transform:uppercase;
+  color:#041257;margin-bottom:8px
+}
+.storage-card p{font-size:15px;color:#4c4c4c;line-height:1.7}
+
+/* ===== ABOUT SECTION ===== */
+.about-section{padding:70px 20px;text-align:center}
+.about-section .inner{max-width:870px;margin:0 auto}
+.about-section h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.about-section .divider{
+  width:75%;height:2px;background:#041257;margin:5px auto 30px
+}
+.about-section p{font-size:17px;color:#4c4c4c;line-height:1.9;margin-bottom:15px}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section{padding:70px 20px;text-align:center;background:#f9f9f9}
+.contact-section .inner{max-width:700px;margin:0 auto}
+.contact-section h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.contact-section .divider{
+  width:75%;height:2px;background:#041257;margin:5px auto 30px
+}
+.contact-details{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.contact-details .item{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-size:18px;color:#4c4c4c
+}
+.contact-details .item .label{
+  font-weight:600;color:#041257;min-width:60px;text-align:right
+}
+.contact-details .item .value{color:#041257;font-weight:600;transition:color .3s}
+.contact-details .item .value:hover{color:#00ACFF}
+
+/* ===== FAQS SECTION ===== */
+.faqs-section{padding:70px 20px;text-align:center}
+.faqs-section .inner{max-width:800px;margin:0 auto}
+.faqs-section h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.faqs-section .divider{
+  width:75%;height:2px;background:#041257;margin:5px auto 30px
+}
+.faq-item{
+  border-bottom:1px solid #e0e0e0;padding:18px 0;
+  text-align:left;cursor:pointer
+}
+.faq-q{
+  font-family:'Abel',sans-serif;font-size:20px;font-weight:600;
+  color:#041257;display:flex;justify-content:space-between;align-items:center
+}
+.faq-indicator{
+  flex-shrink:0;width:20px;height:20px;position:relative;margin-left:12px
+}
+.faq-indicator::before,.faq-indicator::after{
+  content:'';position:absolute;background:#041257;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  transition:transform .3s
+}
+.faq-indicator::before{width:2px;height:16px}
+.faq-indicator::after{width:16px;height:2px}
+.faq-item.open .faq-indicator::before{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+  font-size:16px;color:#4c4c4c;line-height:1.7
+}
+.faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+/* ===== TRUST BADGES ===== */
+.trust-section{padding:100px 20px;text-align:center}
+.trust-section h2{
+  font-family:'Abel',sans-serif;font-size:35px;text-transform:capitalize;
+  color:#4c4c4c;margin-bottom:5px
+}
+.trust-section .divider{
+  width:75%;height:2px;background:#041257;
+  margin:15px auto 40px
+}
+.trust-logos{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:20px;max-width:900px;margin:0 auto;padding-top:25px
+}
+.trust-logos .logo-item{
+  flex:0 0 auto;padding:25px;margin:5px;
+  border-radius:4px;transition:box-shadow .3s;cursor:default;
+  display:flex;align-items:center;justify-content:center
+}
+.trust-logos .logo-item:hover{box-shadow:0 0 25px 0 rgba(0,0,0,.16)}
+
+/* ===== FOOTER ===== */
+.footer-main{
+  background-color:#00AFF9;padding:70px 20px;color:#fff
+}
+.footer-main .inner{max-width:1140px;margin:0 auto}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:30px;text-align:center
+}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+.footer-col h4{
+  font-family:'Abel',sans-serif;font-size:18px;font-weight:500;color:#fff;
+  margin-bottom:15px
+}
+.footer-col p{
+  font-size:14px;font-weight:300;color:#fff;line-height:1.8
+}
+.footer-col .contact-btn{
+  display:inline-block;
+  background-color:#1D6F92;color:#fff;
+  font-family:'Roboto',sans-serif;font-size:14px;font-weight:400;
+  padding:12px 24px;border-radius:3px;margin:5px 0;
+  transition:background .3s;border:none;cursor:pointer
+}
+.footer-col .contact-btn:hover{background-color:#155574}
+.footer-col ul{list-style:none;padding:0}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{
+  font-size:19px;font-weight:300;color:#fff;
+  transition:color .3s
+}
+.footer-col ul li a:hover{color:#1D6F92}
+
+.footer-bottom{
+  background-color:#041257;padding:15px 20px;text-align:center;
+  border-top:1px solid rgba(255,255,255,.19);
+  display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;
+  min-height:50px
+}
+.footer-bottom span{
+  font-size:12px;font-weight:300;color:#adadad
+}
+.footer-bottom a{
+  font-size:12px;font-weight:300;color:#adadad;transition:color .3s
+}
+.footer-bottom a:hover{color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .top-bar{padding:15px 20px;min-height:auto;flex-direction:row}
+  .top-bar .phone-btn{font-size:14px;padding:6px 12px}
+  .nav-bar ul{flex-wrap:wrap;justify-content:center}
+  .nav-bar ul li a{padding:10px 16px;font-size:13px}
+}
+@media(max-width:767px){
+  .hero h1{font-size:42px}
+  .hero p{font-size:18px}
+  .hero .btn{font-size:20px;padding:14px 28px}
+}
+</style>
+</head>
+<body>
+
+<div class="closure-banner">
+  NOTICE OF CLOSURE — THIS FACILITY IS PERMANENTLY CLOSED
+  <span class="sub">All services have been discontinued. For inquiries regarding existing accounts or property retrieval, please use the contact details provided below.</span>
+</div>
+
+<div class="top-bar">
+  <div class="logo">
+    <svg viewBox="0 0 600 175" xmlns="http://www.w3.org/2000/svg" width="300" height="88">
+      <rect width="600" height="175" fill="transparent"/>
+      <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Abel',sans-serif" font-size="88" font-weight="900" fill="#041257" letter-spacing="4">BH</text>
+      <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="'Abel',sans-serif" font-size="24" font-weight="400" fill="#041257" letter-spacing="8">PRIVATE VAULTS</text>
+    </svg>
+  </div>
+  <div class="phone-wrap">
+    <a href="tel:+12763004429" class="phone-btn">(276) 300-4429</a>
+  </div>
+</div>
+
+<div class="nav-bar">
+  <div class="nav-inner">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#storage">Storage Options</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+    </ul>
+  </div>
+</div>
+
+<section id="home" class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>High Security Private Vault Facility</h1>
+    <p>Get high security storage for your assets and valuables and one-of-a-kind peace of mind by storing with BH Private Vaults.</p>
+    <a href="#storage" class="btn">Learn about our Storage Options</a>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="inner">
+    <h2>Need to keep something secret, safe, or secure?</h2>
+    <div class="col-wrap">
+      <p>If you are concerned about the safety and security of your valuable assets, BH Private Vaults provides the optimal solution. We offer the premier alternative to bank safe deposit boxes. Our private vault storage delivers <strong>SAFE</strong>, <strong>SECURE</strong>, and <strong>ANONYMOUS</strong> storage for all types of valuables with 24-hour access, 365 days per year.</p>
+    </div>
+    <a href="tel:+12763004429" class="btn-call" style="margin-top:30px;display:inline-block">Inquiries: (276) 300-4429</a>
+  </div>
+</section>
+
+<section class="why-choose">
+  <div class="inner">
+    <h2>Why choose BH Private Vault Storage?</h2>
+    <div class="divider"></div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3>Untraceable Privacy</h3>
+        <p>Only you will be able to access your vault. We employ advanced iris scans coupled with a pin code and unique keys. No driver's license or social security number is required to rent a vault.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Always Open</h3>
+        <p>Clients have 24/7 access, 365 days a year. The facility features backup power supply systems that maintain full operation even during power outages, ensuring continuous access to your assets.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Maximum Security</h3>
+        <p>Our facility has been designed from the ground up to military-grade standards, featuring fortified steel walls, bulletproof glass, laser sensors, armed security personnel, and biometric iris scanners.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Variety of Storage Sizes</h3>
+        <p>Our facility offers a comprehensive range of safe deposit box sizes and vaults, providing multiple options to accommodate valuables of any scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="storage" class="storage-section">
+  <div class="inner">
+    <h2>Storage Options</h2>
+    <div class="divider"></div>
+    <div class="storage-grid">
+      <div class="storage-card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3>Safe Deposit Boxes</h3>
+        <p>Various sizes available to protect your documents, jewelry, heirlooms, and other valuables with maximum security.</p>
+      </div>
+      <div class="storage-card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+            <path d="M12 18V6"/>
+          </svg>
+        </div>
+        <h3>Gold &amp; Precious Metals</h3>
+        <p>Specialized storage for bullion, coins, and precious metal assets with climate-controlled environments.</p>
+      </div>
+      <div class="storage-card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Large Storage Vaults</h3>
+        <p>Oversized vaults designed for estates, art collections, business records, and bulk asset storage requirements.</p>
+      </div>
+      <div class="storage-card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#041257" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>High Security Vaults</h3>
+        <p>Maximum security enclosures equipped with military-grade protection systems for your most valuable assets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="inner">
+    <h2>About BH Private Vaults</h2>
+    <div class="divider"></div>
+    <p>BH Private Vaults is a premier private vault storage facility dedicated to providing safe, secure, and anonymous storage solutions for all types of valuables. Our facility has been designed from the ground up with military-grade security standards, ensuring your assets are protected at all times.</p>
+    <p>We believe in uncompromising privacy and security. Our advanced biometric iris scanning technology, coupled with unique PIN codes and physical keys, ensures that only you can access your vault. No identification or social security number is required to rent a vault, providing complete anonymity.</p>
+    <p>With 24/7 access, 365 days a year, and backup power systems, you can access your valuables whenever you need them, even during power outages.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="inner">
+    <h2>Contact Us</h2>
+    <div class="divider"></div>
+    <p style="font-size:17px;color:#4c4c4c;line-height:1.8;margin-bottom:10px">For inquiries regarding existing accounts or property retrieval, please reach out using the details below.</p>
+    <div class="contact-details">
+      <div class="item">
+        <span class="label">Email</span>
+        <a href="mailto:beverlyhillsvault.closure@outlook.com" class="value">beverlyhillsvault.closure@outlook.com</a>
+      </div>
+      <div class="item">
+        <span class="label">Phone</span>
+        <a href="tel:+12763004429" class="value">(276) 300-4429</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faqs" class="faqs-section">
+  <div class="inner">
+    <h2>Frequently Asked Questions</h2>
+    <div class="divider"></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What identification is required to rent a vault? <span class="faq-indicator"></span></div>
+      <div class="faq-a">No driver's license or social security number is required. We prioritize your privacy and anonymity above all else.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What are your access hours? <span class="faq-indicator"></span></div>
+      <div class="faq-a">We offer 24/7 access, 365 days a year. Our facility is always open to our clients, even during holidays and power outages.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What security measures are in place? <span class="faq-indicator"></span></div>
+      <div class="faq-a">Our facility features fortified steel walls, bulletproof glass, laser sensors, armed security personnel, and advanced biometric iris scanners.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Is the facility currently operational? <span class="faq-indicator"></span></div>
+      <div class="faq-a">No, BH Private Vaults has permanently ceased operations. All vaults have been decommissioned and the facility is closed. For inquiries regarding existing accounts, please use the contact information above.</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-section">
+  <h2>Secure. Trusted. Local.</h2>
+  <div class="divider"></div>
+  <div class="trust-logos">
+    <div class="logo-item"><span style="font-size:26px;font-weight:700;color:#4c4c4c;font-family:'Abel',sans-serif">ADT</span></div>
+    <div class="logo-item"><span style="font-size:22px;font-weight:300;color:#6e6e6e;font-family:'Abel',sans-serif">SLC Chamber</span></div>
+    <div class="logo-item"><span style="font-size:20px;font-weight:400;color:#878b73;font-family:'Abel',sans-serif">Trust Vault</span></div>
+    <div class="logo-item"><span style="font-size:24px;font-weight:700;color:#2a4858;font-family:'Abel',sans-serif">BBB</span></div>
+    <div class="logo-item"><span style="font-size:18px;font-weight:500;color:#2a211f;font-family:'Abel',sans-serif">Sandy Chamber</span></div>
+  </div>
+</section>
+
+<footer class="footer-main">
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Contact &amp; Access</h4>
+        <p>
+          For inquiries regarding existing accounts or property retrieval, please reach out via the contact methods below.
+        </p>
+        <br>
+        <a href="mailto:beverlyhillsvault.closure@outlook.com" class="contact-btn">Email Us</a>
+        <a href="tel:+12763004429" class="contact-btn">(276) 300-4429</a>
+      </div>
+      <div class="footer-col">
+        <h4>Office Hours</h4>
+        <p>
+          Customer Access: 24/7 – 365<br><br>
+          Office Hours:<br>
+          Monday – Friday: 10:00 a.m. – 5:00 p.m.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4><u>Resources</u></h4>
+        <ul>
+          <li><a href="#storage">Safe Deposit Boxes</a></li>
+          <li><a href="#storage">Large Storage Vaults</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><u>Blog Posts</u></h4>
+        <ul>
+          <li><a href="#">How to Protect Wealth</a></li>
+          <li><a href="#">Banks vs Private Vaults</a></li>
+          <li><a href="#">Private Vault Storage</a></li>
+          <li><a href="#">Safe Deposit Box Alternatives</a></li>
+          <li><a href="#">Gold Storage Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <span>&copy; All rights reserved &mdash; BH Private Vaults</span>
+  <a href="#">Privacy Policy</a>
+  <span>|</span>
+  <span>Permanently Closed</span>
+</div>
+
+</body>
+</html>
